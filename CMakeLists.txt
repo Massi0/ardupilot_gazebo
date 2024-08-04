@@ -23,6 +23,9 @@ pkg_check_modules(GST REQUIRED gstreamer-1.0>=1.8)
 if ( NOT (GST_FOUND))
       message(FATAL_ERROR "Please Install Gstreamer Dev: CMake will Exit")
 endif()
+
+find_package(OpenCV REQUIRED)
+
 set(ENV{PKG_CONFIG_PATH})
 
 
@@ -146,6 +149,9 @@ link_directories(
 include_directories("${GST_INCLUDE_DIRS}")
 
 link_libraries(${GST_LIBRARIES})
+
+include_directories("${OpenCV_INCLUDE_DIRS}")
+link_libraries(${OpenCV_LIBRARIES})
 
 set (plugins_single_header
         ArduPilotPlugin
