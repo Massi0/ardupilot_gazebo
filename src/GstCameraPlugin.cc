@@ -157,36 +157,9 @@ GstCameraPlugin::~GstCameraPlugin()
   }
 }
 
-namespace{
-  sensors::SensorPtr GetCameraSensor(physics::ModelPtr model, sdf::ElementPtr sdf){
-
-    std::string cameraSensorName = "camera";
-    if (sdf->HasElement("sensor"))
-    {
-      cameraSensorName = sdf->Get<std::string>("sensor");
-    }
-    sensors::SensorPtr sensor = model->GetSensor(cameraSensorName);
-    if (!sensor)
-    {
-      std::string scopedCameraSensorName = model->GetScopedName() + "::" + cameraSensorName;
-      gzwarn << "sensor [" << cameraSensorName
-            << "] not found, trying again with scoped sensor name ["
-            << scopedCameraSensorName << "]\n";
-      sensor = model->GetSensor(scopedJointName);
-    }
-    if (!sensor)
-    {
-      gzerr << "GstCameraPlugin::Load ERROR! Can't get sensor '"
-            << cameraSensorName << "' " << endl;
-    }
-    return sensor;
-  }
-}
 /////////////////////////////////////////////////
-void GstCameraPlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
+void GstCameraPlugin::Load(sensors::SensorPtr sensor, sdf::ElementPtr sdf)
 {
-
-  sensors::SensorPtr sensor = GetCameraSensor(model, sdf);
   if (!sensor)
     gzerr << "Invalid sensor pointer.\n";
 

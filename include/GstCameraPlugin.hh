@@ -50,7 +50,7 @@ class GAZEBO_VISIBLE GstCameraPlugin : public SensorPlugin
 
   public: virtual ~GstCameraPlugin();
 
-  public: virtual void Load(physics::ModelPtr model, sdf::ElementPtr sdf);
+  public: virtual void Load(sensors::SensorPtr sensor, sdf::ElementPtr sdf);
 
   public: virtual void OnNewFrame(const unsigned char *image,
 		unsigned int width, unsigned int height,
