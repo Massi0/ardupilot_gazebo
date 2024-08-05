@@ -157,7 +157,7 @@ set (plugins_single_header
         ArduPilotPlugin
         ArduCopterIRLockPlugin
         GimbalSmall2dPlugin
-        GazeboGstCameraPlugin
+        GstCameraPlugin
         )
 
 add_library(ArduCopterIRLockPlugin SHARED src/ArduCopterIRLockPlugin.cc)
@@ -166,8 +166,8 @@ target_link_libraries(ArduCopterIRLockPlugin ${GAZEBO_LIBRARIES})
 add_library(ArduPilotPlugin SHARED src/ArduPilotPlugin.cc)
 target_link_libraries(ArduPilotPlugin ${GAZEBO_LIBRARIES})
 
-add_library(GazeboGstCameraPlugin SHARED src/GazeboGstCameraPlugin.cc)
-target_link_libraries(GazeboGstCameraPlugin ${GAZEBO_LIBRARIES})
+add_library(GstCameraPlugin SHARED src/GstCameraPlugin.cc)
+target_link_libraries(GstCameraPlugin ${GAZEBO_LIBRARIES})
 
 if("${GAZEBO_VERSION}" VERSION_LESS "8.0")
     add_library(GimbalSmall2dPlugin SHARED src/GimbalSmall2dPlugin.cc)
@@ -177,7 +177,7 @@ endif()
 
 install(TARGETS ArduCopterIRLockPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
 install(TARGETS ArduPilotPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
-install(TARGETS GazeboGstCameraPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
+install(TARGETS GstCameraPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
 
 install(DIRECTORY models DESTINATION ${GAZEBO_MODEL_PATH}/..)
 install(DIRECTORY worlds DESTINATION ${GAZEBO_MODEL_PATH}/..)

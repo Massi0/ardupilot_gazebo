@@ -21,7 +21,7 @@
 #endif
 
 #include "gazebo/sensors/DepthCameraSensor.hh"
-#include "include/GazeboGstCameraPlugin.hh"
+#include "include/GstCameraPlugin.hh"
 #include <gst/app/gstappsrc.h>
 
 #include <math.h>
@@ -29,7 +29,6 @@
 #include <iostream>
 #include <thread>
 #include <time.h>
-#include "Int32.pb.h"
 
 #include <opencv2/opencv.hpp>
 
