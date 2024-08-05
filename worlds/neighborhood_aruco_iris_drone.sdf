@@ -2068,6 +2068,7 @@
             <robotNamespace></robotNamespace>
             <udpHost>127.0.0.1</udpHost>
             <udpPort>5600</udpPort>
+            <sensor>camera</sensor>
       </plugin>
       <plugin name='arducopter_plugin' filename='libArduPilotPlugin.so'>
         <fdm_addr>127.0.0.1</fdm_addr>
