@@ -87,10 +87,36 @@ void GstCameraPlugin::startGstThread() {
     g_object_set(G_OBJECT(sink), "host", this->udpHost.c_str(), "port", this->udpPort, nullptr);
   }
 
-  if (!source || !queue || !converter || !encoder || !payloader || !sink) {
-    gzerr << "ERR: Create elements failed. \n";
+  if (!source) {
+    gzerr << "ERR: Create source element failed. \n";
     return;
   }
+
+  if (!queue) {
+      gzerr << "ERR: Create queue element failed. \n";
+      return;
+  }
+
+  if (!converter) {
+      gzerr << "ERR: Create converter element failed. \n";
+      return;
+  }
+
+  if (!encoder) {
+      gzerr << "ERR: Create encoder element failed. \n";
+      return;
+  }
+
+  if (!payloader) {
+      gzerr << "ERR: Create payloader element failed. \n";
+      return;
+  }
+
+  if (!sink) {
+      gzerr << "ERR: Create sink element failed. \n";
+      return;
+  }
+
 
   // gzerr <<"width"<< this->width<<"\n";
   // gzerr <<"height"<< this->height<<"\n";
